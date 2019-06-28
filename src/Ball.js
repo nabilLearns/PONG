@@ -7,12 +7,18 @@ class Ball {
     //ball starts moving in a random direction
     this.xvel = _xvel;
     this.yvel = _yvel;
+    
+    this.acceleration = 1.5;
+    this.hit_counter = 0;
   }
 
   respawnBall() {
     this.x = width/2;
     this.y = random(0, height);
-    //acceleration = 0;
+    
+    this.acceleration = 1.2;
+    this.xvel /= Math.pow(this.acceleration, this.hit_counter);
+    this.hit_counter = 0;
   }
 
   checkBoundaryCollisions() {
@@ -61,8 +67,9 @@ class Ball {
         this.xvel = -magnitude * sin(bpAngle); // => RESETS speed; problem for acceleration change '=' to '-='
         this.yvel = magnitude * cos(bpAngle);
 
-        //acceleration += 0.2;
-        //this.xvel *= (1 + acceleration);
+        this.hit_counter += 1;
+        this.xvel *= this.acceleration;
+        this.acceleration += 0.3;
 
         //shrink paddle, accelerate ball
         p1.pHeight *= 0.95;
@@ -82,8 +89,9 @@ class Ball {
         this.xvel = magnitude * sin(bpAngle); //change '=' to '+='
         this.yvel = magnitude * cos(bpAngle);
 
-        //acceleration += 0.2;
-        //this.xvel *= (1 + acceleration);
+        this.hit_counter += 1;
+        this.xvel *= this.acceleration;
+        this.acceleration += 0.3;
 
         p2.pHeight *= 0.95;
       }
