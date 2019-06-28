@@ -1,5 +1,6 @@
 
 ## PONG
+Developer: Nabil Mohamed
 Created for the PointClickCare summer internship challenge, this game is a remake of the original 1972 [classic](https://en.wikipedia.org/wiki/Pong).
 
 [PLAY](https://nabillearns.github.io/PONG/) the game!
