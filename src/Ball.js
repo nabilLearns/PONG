@@ -49,32 +49,32 @@ class Ball {
 
   checkPlayerCollisions(){
     //BALL-PLAYER COLLISION MECHANICS
-    let ycentre = this.y + (this.size / 2); //=>ball constructor
-    let p1centre = p1.y  + (p1.pHeight / 2); //=>p1 construcotr
-    let p2centre = p2.y + (p2.pHeight / 2); //=>p2 constructor
-    let bpAngle; //=>global
+    let ycentre = this.y + (this.size / 2);
+    let p1centre = p1.y  + (p1.pHeight / 2);
+    let p2centre = p2.y + (p2.pHeight / 2);
+    let bpAngle; //angle between the surface of the paddle and the ball
 
-   //player 1 collision (right) //using Axis-Aligned bounding box test
+   //player 1 collision (right)
    if(this.x + this.size > p1.x &&
       this.x < p1.x + p1.pWidth &&
       this.y + this.size > p1.y &&
-      this.y < p1.y + p1.pHeight){  //p1.y + p1.pHeight - this.size ONLY counts hit if FULL ball hits paddle
+      this.y < p1.y + p1.pHeight){
         ballCollisionSound.play();
 
         bpAngle = 90 - (((ycentre - p1centre) / 8) * 5); //expressed in degrees
         bpAngle *= PI / 180; //convert to radians
 
-        this.xvel = -magnitude * sin(bpAngle); // => RESETS speed; problem for acceleration change '=' to '-='
+        this.xvel = -magnitude * sin(bpAngle);
         this.yvel = magnitude * cos(bpAngle);
-
+        
+        //acceleration!
         this.hit_counter += 1;
         this.xvel *= this.acceleration;
         this.acceleration += 0.3;
 
-        //shrink paddle, accelerate ball
+        //shrink paddle, but increase its speed to balance the change
         p1.pHeight *= 0.95;
-
-
+        p1.yvel += 0.2;
     }
 
    //player2 collision (left)
@@ -86,7 +86,7 @@ class Ball {
         bpAngle = 90 - (((ycentre - p2centre) / 8) * 5);
         bpAngle *= PI / 180;
 
-        this.xvel = magnitude * sin(bpAngle); //change '=' to '+='
+        this.xvel = magnitude * sin(bpAngle);
         this.yvel = magnitude * cos(bpAngle);
 
         this.hit_counter += 1;
@@ -94,6 +94,7 @@ class Ball {
         this.acceleration += 0.3;
 
         p2.pHeight *= 0.95;
+        p2.yvel += 0.2;
       }
 
   }
@@ -102,6 +103,7 @@ class Ball {
     square(this.x, this.y, this.size);
   }
 }
+
 module.exports.ball = Ball;
 
 width = window.innerWidth;
