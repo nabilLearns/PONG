@@ -1,0 +1,14 @@
+{
+  "name": "pong",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest" 
+  },
+  "author": "Nabil Mohamed",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
