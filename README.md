@@ -1,6 +1,6 @@
 
-## PONG: PointClickCare Challenge
-Created for the PointClickCare summer internship challenge, this game is a remake of the original 1972 [classic](https://en.wikipedia.org/wiki/Pong). Being a browser based game, it should be playable on nearly any browser, on either Windows or Mac OS.
+## PONG
+This game is a remake of the original 1972 [classic](https://en.wikipedia.org/wiki/Pong). Being a browser based game, it should be playable on nearly any browser, on either Windows or Mac OS.
 
 ## How to play?
 
