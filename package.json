@@ -9,6 +9,6 @@
   "author": "Nabil Mohamed",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^29.7.0"
   }
 }
